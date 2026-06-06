@@ -9,6 +9,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
+          animation:"fade_from_bottom",
           headerShown: false,
           contentStyle: {
             backgroundColor: colorScheme === "dark" ? "#000" : "#fff",

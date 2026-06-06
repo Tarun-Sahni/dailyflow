@@ -6,7 +6,7 @@ import { useColorScheme } from 'nativewind'
 const Profile = () => {
   const {colorScheme} = useColorScheme()
   return (
-    <SafeAreaView className={`${colorScheme === 'dark' ? 'bg-neutral-950' : 'bg-rose-50/20'} flex-1 justify-between items-center py-14 px-4`}>
+   <SafeAreaView className="flex-1 justify-between items-center py-14 px-4">
       <Text className="dark:text-white">Profile</Text>
     </SafeAreaView>
   )

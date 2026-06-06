@@ -9,7 +9,7 @@ import { Link, router } from 'expo-router'
 const OnBoarding = () => {
   const { colorScheme } = useColorScheme();
   return (
-    <SafeAreaView className={`${colorScheme === 'dark' ? 'bg-neutral-950' : 'bg-rose-50/20'} flex-1 justify-between items-center py-14 px-4`}>
+    <SafeAreaView className="flex-1 justify-between items-center py-14 px-4">
       {/* logo */}
       <View className='items-center justify-center gap-2'>
         <Logo />
@@ -26,7 +26,7 @@ const OnBoarding = () => {
           <View className='h-0.5 flex-1 bg-black/10 dark:bg-white/10'></View>
         </View>
         <View className="flex-row gap-4 w-full">
-          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6">
+          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6 shadow-lg">
             <View className='w-12 h-12 bg-blue-700/20 justify-center items-center rounded-2xl'>
               <Goal color="#3b82f6" />
             </View>
@@ -35,7 +35,7 @@ const OnBoarding = () => {
               <Text className='text-black/60 dark:text-white/50 text-sm leading-tight'>Build 7-days streaks with consistency</Text>
             </View>
           </View>
-          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6">
+          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6 shadow-lg">
             <View className='w-12 h-12 bg-green-700/20 justify-center items-center rounded-2xl'>
               <BadgeCheck color="#22c55e" />
             </View>
@@ -46,7 +46,7 @@ const OnBoarding = () => {
           </View>
         </View>
         <View className="flex-row gap-4 w-full">
-          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6">
+          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6 shadow-lg">
             <View className='w-12 h-12 bg-orange-700/20 justify-center items-center rounded-2xl'>
               <Flame color="#f97316" />
             </View>
@@ -55,7 +55,7 @@ const OnBoarding = () => {
               <Text className='text-black/60 dark:text-white/50 text-sm leading-tight'>Maintain your daily habits</Text>
             </View>
           </View>
-          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6">
+          <View className="flex-1 justify-center items-start gap-4 bg-white dark:bg-neutral-800/50 rounded-xl p-6 shadow-lg">
             <View className='w-12 h-12 bg-purple-700/20 justify-center items-center rounded-2xl'>
               <ChartNoAxesCombined color="#a855f7" />
             </View>
