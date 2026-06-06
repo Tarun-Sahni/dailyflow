@@ -8,14 +8,7 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-     extend: {
-      colors: {
-        muted: {
-          DEFAULT: "#f1f5f9",
-          foreground: "#64748b",
-        },
-      },
-    },
+     extend: {},
   },
   plugins: [],
 }
