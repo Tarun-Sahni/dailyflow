@@ -9,12 +9,9 @@ export default function TabLayout() {
             headerShown: false,
             animation: 'shift',
             tabBarActiveTintColor: '#f43f5e',
-            tabBarInactiveTintColor: 'gray',
-            sceneStyle: {
-                backgroundColor: colorScheme === 'dark' ? 'bg-neutral-950' : 'bg-rose-50/20',
-            },
+            tabBarInactiveTintColor: 'white',
             tabBarStyle: {
-                backgroundColor: colorScheme === 'dark' ? '#000' : '#fff',
+                backgroundColor: colorScheme === 'dark' ? '#171717' : '#fff',
                 borderTopWidth: 0,
             },
         }}>
