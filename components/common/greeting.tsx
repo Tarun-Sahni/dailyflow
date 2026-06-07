@@ -14,7 +14,7 @@ const Greeting = ({ firstName }: { firstName: string }) => {
   } else {
     greeting = "Good Night";
   }
-  return <Text className="text-xl font-bold tracking-wide dark:text-white">{greeting}, {firstName}</Text>;
+  return <Text className="text-xl font-bold tracking-wide dark:text-white line-clamp-1">{greeting}, {firstName}</Text>;
 }
 
 export default Greeting

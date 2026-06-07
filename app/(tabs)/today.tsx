@@ -1,12 +1,13 @@
 import Date from '@/components/common/date';
 import Greeting from '@/components/common/greeting';
-import ThemeToggle from '@/components/common/theme';
+import ThemeToggle from '@/components/theme/theme';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BadgeCheck, Flame, Goal } from 'lucide-react-native';
-import { FlatList, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { BadgeCheck, Bell, Flame, Goal } from 'lucide-react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Progress from 'react-native-progress';
 import TaskCardOne from '@/components/common/taskcardone';
+import { useColorScheme } from 'nativewind';
 
 const tasks = [
   {
@@ -31,20 +32,24 @@ const tasks = [
 ];
 
 export default function Today() {
+  const { colorScheme } = useColorScheme()
   return (
     <View className='flex-1'>
       <LinearGradient
         colors={['#f43f5e', 'transparent', 'transparent']}
         className='flex-1 absolute top-0 left-0 right-0 bottom-0'
       />
-      <SafeAreaView className='flex-1 px-4 bg-transparent gap-4 py-4'>
+      <SafeAreaView className='flex-1 px-4 bg-transparent gap-6 py-4'>
         {/* greeting and date */}
-        <View className='flex-row justify-between items-center px-2'>
-          <View>
+        <View className='flex-row justify-between items-center px-3'>
+          <View  className='flex-1'>
             <Greeting firstName="Tarun" />
             <Date />
           </View>
-          <ThemeToggle />
+          <View className='flex-row items-center gap-4'>
+            <Bell color={colorScheme === "dark" ? "white" : "black"} size={20} />
+            <ThemeToggle />
+          </View>
         </View>
         {/* goal streak and task progress */}
         <View className='flex-row justify-between items-center gap-4'>
@@ -123,25 +128,25 @@ export default function Today() {
               </Text>
             </View>
             <TouchableOpacity
-              className='bg-rose-500 py-2 rounded-full px-4 justify-center items-center mt-4'>
+              className='bg-rose-500 py-2 rounded-xl px-4 justify-center items-center mt-4'>
               <Text className='text-white'>Mark Done Today</Text>
             </TouchableOpacity>
           </View>
         </View>
         {/* todays quick tasks */}
-        <View className='gap-4 flex-1'>
-          <View className="items-center justify-center">
-            <Text className='text-lg font-bold tracking-wide capitalize dark:text-white'>Your Pending Tasks</Text>
-            <Text className='text-sm tracking-wider dark:text-white/50 text-black/50'>Small wins leads big results</Text>
-          </View>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ gap: 12 }}
-            data={tasks}
-            renderItem={({ item }) => <TaskCardOne task={item} />}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+        <FlatList
+          ListHeaderComponent={
+            <View className="items-center justify-center mb-2">
+              <Text className='text-lg font-bold tracking-wide capitalize dark:text-white'>Your Pending Tasks</Text>
+              <Text className='text-sm tracking-wider dark:text-white/50 text-black/50'>Small wins leads big results</Text>
+            </View>
+          }
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ gap: 12 }}
+          data={tasks}
+          renderItem={({ item }) => <TaskCardOne task={item} />}
+          keyExtractor={(item) => item.id}
+        />
       </SafeAreaView>
     </View>
   );
