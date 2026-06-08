@@ -9,6 +9,7 @@ import * as Progress from 'react-native-progress';
 import TaskCardOne from '@/components/common/taskcardone';
 import { useColorScheme } from 'nativewind';
 import { useAuthStore } from '@/store/authstore';
+import LogOut from '@/components/common/logout';
 
 const tasks = [
   {
@@ -50,7 +51,8 @@ const Today = () => {
             <Greeting firstName={user.firstName || "hello"} />
             <Date />
           </View>
-          <View className='flex-row items-center gap-4'>
+          <View className='flex-row items-center gap-3'>
+            <LogOut/>
             <Bell color={colorScheme === "dark" ? "white" : "black"} size={20} />
             <ThemeToggle />
           </View>
