@@ -1,5 +1,5 @@
-import { View, Text, ImageBackground, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, ActivityIndicator } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, ActivityIndicator } from 'react-native'
+import React, { useState } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useColorScheme } from 'nativewind'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -7,7 +7,9 @@ import Logo from '@/components/common/logo'
 import BrandName from '@/components/common/brand'
 import { Asterisk, Eye, EyeClosed, ShieldCheck } from 'lucide-react-native'
 import * as Progress from 'react-native-progress';
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+import { Toast } from 'toastify-react-native'
+import { useAuthStore } from '@/store/authstore'
 
 function PasswordStrengthChecker(password: string) {
   let score = 0;
@@ -61,18 +63,41 @@ const Register = () => {
   const handleRegister = async () => {
     try {
       setLoading(true)
-      console.log(form);
-
+      if (form.firstName === "" || form.lastName === "" || form.email === "" || form.password === "") {
+        Toast.error("Missing Required Fields.")
+      } else if (passwordStrength.score <= 4) {
+        Toast.error("Choose Strong Password.")
+      } else {
+        const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(form)
+        })
+        const data = await response.json();
+        if (data?.success) {
+          console.log(data);
+          Toast.success(data?.message)
+          useAuthStore.getState().setAuth(
+  data.token,
+  data.user
+);
+          router.replace("/(tabs)/today")
+        } else {
+          setForm({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: ""
+          })
+          Toast.error(data?.message)
+        }
+      }
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false)
-      setForm({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: ""
-      })
     }
   }
   return (

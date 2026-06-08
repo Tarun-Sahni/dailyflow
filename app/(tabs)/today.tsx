@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Progress from 'react-native-progress';
 import TaskCardOne from '@/components/common/taskcardone';
 import { useColorScheme } from 'nativewind';
+import { useAuthStore } from '@/store/authstore';
 
 const tasks = [
   {
@@ -31,8 +32,11 @@ const tasks = [
   }
 ];
 
-export default function Today() {
+const Today = () => {
   const { colorScheme } = useColorScheme()
+  const token = useAuthStore((state) => state?.token);
+  const user = useAuthStore((state) => state?.user);
+  
   return (
     <View className='flex-1'>
       <LinearGradient
@@ -42,8 +46,8 @@ export default function Today() {
       <SafeAreaView className='flex-1 px-4 bg-transparent gap-6 py-4'>
         {/* greeting and date */}
         <View className='flex-row justify-between items-center px-3'>
-          <View  className='flex-1'>
-            <Greeting firstName="Tarun" />
+          <View className='flex-1'>
+            <Greeting firstName={user.firstName || "hello"} />
             <Date />
           </View>
           <View className='flex-row items-center gap-4'>
@@ -151,3 +155,5 @@ export default function Today() {
     </View>
   );
 }
+
+export default Today
