@@ -9,18 +9,35 @@ export default function Index() {
   const token = useAuthStore((state) => state?.token);
   const [ready, setReady] = useState(false);
 
+  const verifyAuth = async () => {
+    try {
+      if (!ready) return;
+      if (token) {
+        const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/verifyauth`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ token })
+        })
+        const data = await response.json();
+        if (data?.success) {
+          router.replace("/(tabs)/today");
+        }
+      } else {
+        router.replace("/onboarding");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     setReady(true);
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
-
-    if (token) {
-      router.replace("/(tabs)/today");
-    } else {
-      router.replace("/onboarding");
-    }
+    verifyAuth();
   }, [ready, token]);
 
   return (
