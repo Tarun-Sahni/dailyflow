@@ -48,7 +48,7 @@ const Today = () => {
         {/* greeting and date */}
         <View className='flex-row justify-between items-center px-3'>
           <View className='flex-1'>
-            <Greeting firstName={user.firstName || "hello"} />
+            <Greeting firstName={user?.firstName || "hello"} />
             <Date />
           </View>
           <View className='flex-row items-center gap-3'>

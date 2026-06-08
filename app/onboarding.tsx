@@ -8,12 +8,12 @@ import BrandName from '@/components/common/brand'
 
 const OnBoarding = () => {
   return (
-    <SafeAreaView className="flex-1 justify-between items-center py-14 px-4">
+    <SafeAreaView className="flex-1 justify-between items-center py-16 px-4">
       <StatusBar />
       {/* logo */}
       <View className='items-center justify-center gap-2'>
         <Logo />
-        <BrandName/>
+        <BrandName />
         <Text className='text-sm dark:text-white/50 mt-2'>
           Your daily planner & goal tracker
         </Text>
@@ -67,20 +67,11 @@ const OnBoarding = () => {
         </View>
       </View>
       {/* end section */}
-      <View className='w-full items-center gap-4'>
-        <TouchableOpacity
-          onPress={() => { router.push("/(auth)/register") }}
-          className='bg-rose-500 px-6 py-3 rounded-full items-center justify-center w-full'>
-          <Text className='text-white font-medium'>Get Started</Text>
-        </TouchableOpacity>
-        <View className='flex-row justify-center gap-1'>
-          <Text className='dark:text-white/50'>
-            Already have an account?
-          </Text>
-          <Link href="/(auth)/login" className='text-rose-500 font-medium'>Sign In</Link>
-        </View>
-      </View>
-
+      <TouchableOpacity
+        onPress={() => { router.push("/(auth)/login") }}
+        className='bg-rose-500 px-6 py-3 rounded-full items-center justify-center w-full'>
+        <Text className='text-white font-medium'>Get Started</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
