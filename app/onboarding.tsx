@@ -1,20 +1,19 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StatusBar } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { BadgeCheck, ChartNoAxesCombined, Flame, Goal } from "lucide-react-native"
 import Logo from '@/components/common/logo'
 import { Link, router } from 'expo-router'
-import { BRAND } from '../lib/constant'
+import BrandName from '@/components/common/brand'
 
 const OnBoarding = () => {
   return (
     <SafeAreaView className="flex-1 justify-between items-center py-14 px-4">
+      <StatusBar />
       {/* logo */}
       <View className='items-center justify-center gap-2'>
         <Logo />
-        <Text className='text-2xl font-medium dark:text-white'>
-          {BRAND}
-        </Text>
+        <BrandName/>
         <Text className='text-sm dark:text-white/50 mt-2'>
           Your daily planner & goal tracker
         </Text>

@@ -1,21 +1,25 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { useColorScheme } from 'nativewind'
-import { Bell, ChevronLeft, Plus } from 'lucide-react-native'
-import ThemeToggle from '@/components/theme/theme'
-import { router } from 'expo-router'
+import { View, Text, TouchableOpacity, Modal, KeyboardAvoidingView, Platform, TextInput } from 'react-native'
+import React, { useState } from 'react'
+import { Plus, X } from 'lucide-react-native'
+import { DateType } from "react-native-ui-datepicker";
+import DatePicker from '@/components/common/datepicker';
+import AddGoal from '@/components/common/addgoal';
 
 const Goals = () => {
-  const { colorScheme } = useColorScheme()
+  const [addGoal, setAddGoal] = useState(false)
   return (
-    <SafeAreaView className="flex-1 justify-between items-center py-4 px-4 relative">
-      {/* Add Goals */}
-      <TouchableOpacity className='w-14 h-14 rounded-full bg-rose-500 absolute right-6 bottom-6 justify-center items-center'>
+    <View className='flex-1 justify-between gap-4 pb-8 px-4 relative'>
+      {/* Add Goal */}
+      <TouchableOpacity
+        onPress={() => setAddGoal(true)}
+        className='w-14 h-14 rounded-full bg-rose-500 absolute right-6 bottom-6 justify-center items-center z-50'>
         <Plus color="white" size={30} />
       </TouchableOpacity>
-      <Text>test</Text>
-    </SafeAreaView>
+      <AddGoal
+        visible={addGoal}
+        onClose={() => setAddGoal(false)}
+      />
+    </View>
   )
 }
 

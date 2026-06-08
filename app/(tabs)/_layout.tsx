@@ -1,8 +1,8 @@
 import ThemeToggle from '@/components/theme/theme';
-import { router, Tabs } from 'expo-router';
-import { Bell, CalendarDays, ChevronLeft, Goal, ListChecks, ShieldUser } from 'lucide-react-native';
+import { Tabs } from 'expo-router';
+import { Bell, CalendarDays, Goal, ListChecks, Notebook, ShieldUser } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function TabLayout() {
     const { colorScheme } = useColorScheme();
@@ -35,7 +35,7 @@ export default function TabLayout() {
                 options={{
                     headerStyle: { backgroundColor: 'transparent' },
                     headerShadowVisible: false,
-                    tabBarIcon: () => <Goal color="#f43f5e" size={22} />,
+                    tabBarIcon: () => <ListChecks color="#f43f5e" size={22} />,
                     headerTitleAlign: 'left',
                     headerTitle: () => (<Text className='text-lg font-bold pl-2 dark:text-white'>Today's Tasks</Text>),
                     headerRight: () => (<View className='flex-row items-center gap-4 pr-6'>
@@ -75,7 +75,7 @@ export default function TabLayout() {
 
                 options={{
                     headerShadowVisible: false,
-                    tabBarIcon: () => <Goal color="#f43f5e" size={22} />,
+                    tabBarIcon: () => <Notebook color="#f43f5e" size={22} />,
                     headerTitleAlign: 'left',
                     headerTitle: () => (<Text className='text-lg font-bold pl-2 dark:text-white'>Today's Tasks</Text>),
                     headerRight: () => (<View className='flex-row items-center gap-4 pr-6'>
