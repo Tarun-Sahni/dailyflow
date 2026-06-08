@@ -79,10 +79,7 @@ const Register = () => {
         if (data?.success) {
           console.log(data);
           Toast.success(data?.message)
-          useAuthStore.getState().setAuth(
-  data.token,
-  data.user
-);
+          useAuthStore.getState().setAuth(data.token, data.user);
           router.replace("/(tabs)/today")
         } else {
           setForm({
